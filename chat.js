@@ -30,17 +30,24 @@ const data = [{
     _id: "5"
 }
 ]
-updateUi();
-function updateUi() {
-    for (var i = 1; i <= data.length; i++) {
-        var msg1 = data[i - 1].message;
-        var id = "row" + i;
-        document.getElementById('row' + i).innerHTML = msg1;
-        dateObj = new Date(data[i - 1].createdAt);
-        document.getElementById('t' + i).innerHTML = timeSince(dateObj) + ' ago';
-
+function gaetDataFromServer(){
+    return data;
+}
+function constructor() {
+    var data = gaetDataFromServer();
+    var table = document.getElementById("myTable");
+    for (var i = 0; i < data.length; i++) {
+        var row = table.insertRow(i);
+        dateObj = new Date(data[i].createdAt);
+        if (data[i].sender == "user") {
+            row.innerHTML = "<tr><div class='column'><div class='row'><div class='chat user'><div class='user_photo'></div><p class='chat-message' id='row'> " + data[i].message + " </p></div> </div><span class='usertime' id='t1'>" + timeSince(dateObj) + ' ago' + "</span></div></tr>";
+        }
+        else {
+            row.innerHTML = "<tr><div class='column'><div class='row'><div class='chat agent'><div class='agent_photo'></div><p class='chat-message' id='row'> " + data[i].message + " </p></div> </div><span class='agenttime' id='t1'>" + timeSince(dateObj) + ' ago' + "</span></div></tr>";
+        }
     }
 }
+ const ch=new constructor();
 
 function timeSince(date) {
 
@@ -77,9 +84,11 @@ function add_text() {
     }
     var msgObj = { message: document.getElementById('text').value, createdAt: new Date().toISOString(), sender: "user", id: data.length + 1 }
     data.push(msgObj);
-    var table = document.getElementById("myTable");
-    var row = table.insertRow(-1);
-    dateObj = new Date(msgObj.createdAt);
-    row.innerHTML = "<tr><div class='column'><div class='row'><div class='chat user'><div class='user_photo'></div><p class='chat-message' id='row'> " + msgObj.message + " </p></div> </div><span class='usertime' id='t1'>" + timeSince(dateObj) + ' ago' + "</span></div></tr>";
-    document.getElementById("text").value = '';
+     var table = document.getElementById("myTable");
+     var row = table.insertRow(-1);
+     dateObj = new Date(msgObj.createdAt);
+     row.innerHTML = "<tr><div class='column'><div class='row'><div class='chat user'><div class='user_photo'></div><p class='chat-message' id='row'> " + msgObj.message + " </p></div> </div><span class='usertime' id='t1'>" + timeSince(dateObj) + ' ago' + "</span></div></tr>";
+    
+     document.getElementById("text").value = '';
+     
 }

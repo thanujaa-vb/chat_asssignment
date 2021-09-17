@@ -11,55 +11,15 @@
 
 <body>
     <div class="chatbox">
-        <div class="chatlogs">
+        <div class="chatlogs" id="chatlogs">
             <table id="myTable">
-                <tr>
-                    <div class="column">
-                        <div class="row">
-                            <div class="chat agent">
-                                <div class="agent_photo"> </div>
-                                <p class="chat-message" id="row1"></p>
-                            </div>
-                        </div>
-                        <span class=agenttime id="t1"></span>
-                    </div>
-                </tr>
-                <tr>
-                    <div class="chat user">
-                        <div class="user_photo"></div>
-                        <p class="chat-message" id="row2"></p>
-                    </div>
-                    <span class="usertime" id="t2"></p>
-                </tr>
-                <tr>
-                    <div class="chat agent">
-                        <div class="agent_photo"></div>
-                        <p class="chat-message" id="row3"></p>
-                    </div>
-                    <span class="agenttime" id="t3"></span>
-                </tr>
-                <tr>
-                    <div class="chat user">
-                        <div class="user_photo"></div>
-                        <p class="chat-message" id="row4"></p>
-                    </div>
-                    <span class="usertime" id="t4"></span>
-                </tr>
-                <tr>
-                    <div class="chat agent">
-                        <div class="agent_photo"></div>
-                        <p class="chat-message" id="row5"></p>
-                    </div>
-                    <span class="agenttime" id="t5"></span>
-                </tr>
 
+            </table>
         </div>
-        </table>
-    </div>
-    <div class="chat-form">
-        <textarea id="text" placeholder="Enter message"></textarea>
-        <button type="button" id="btn" onClick="add_text()" ;>send</button>
-    </div>
+        <div class="chat-form">
+            <textarea id="text" placeholder="Enter message"></textarea>
+            <button type="button" id="btn" onClick="add_text()" ;>send</button>
+        </div>
     </div>
     <script src="chat.js"></script>
 </body>
